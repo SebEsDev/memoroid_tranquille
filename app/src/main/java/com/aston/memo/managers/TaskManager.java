@@ -32,7 +32,12 @@ public class TaskManager {
         return taskList.get(index);
     }
 
-    public void addnewTask(Task task) {
+    public void addNewTask(Task task) {
         taskList.add(task);
+        save();
+    }
+
+    public void save(){
+        Hawk.put(Constants.TASK_LIST, taskList);
     }
 }

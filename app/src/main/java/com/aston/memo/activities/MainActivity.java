@@ -3,7 +3,6 @@ package com.aston.memo.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -14,8 +13,6 @@ import android.widget.Switch;
 
 import com.aston.memo.R;
 import com.aston.memo.adapters.TaskAdapter;
-
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -41,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        taskAdapter = new TaskAdapter(getLayoutInflater());
+        taskAdapter = new TaskAdapter(getLayoutInflater(), this);
         listView.setAdapter(taskAdapter);
         listView.setEmptyView(findViewById(R.id.main_list_empty));
     }

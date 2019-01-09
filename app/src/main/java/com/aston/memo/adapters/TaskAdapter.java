@@ -1,5 +1,7 @@
 package com.aston.memo.adapters;
 
+import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,9 +16,11 @@ import com.aston.memo.model.Task;
 public class TaskAdapter extends BaseAdapter {
 
     private LayoutInflater mLayoutInflater;
+    private Context mContext;
 
-    public TaskAdapter(LayoutInflater mLayoutInflater) {
+    public TaskAdapter(LayoutInflater mLayoutInflater, Context mContext) {
         this.mLayoutInflater = mLayoutInflater;
+        this.mContext = mContext;
     }
 
     @Override
@@ -44,6 +48,7 @@ public class TaskAdapter extends BaseAdapter {
             viewHolder.description = convertView.findViewById(R.id.task_line_desc);
             viewHolder.deadLine = convertView.findViewById(R.id.task_line_deadLine);
             viewHolder.done = convertView.findViewById(R.id.task_line_done);
+            viewHolder.background = convertView.findViewById(R.id.task_line_background);
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
@@ -52,12 +57,24 @@ public class TaskAdapter extends BaseAdapter {
         viewHolder.title.setText(task.getTitle());
         viewHolder.description.setText(task.getDescription());
         viewHolder.done.setVisibility(task.isDone() ? View.VISIBLE : View.GONE);
+        switch(task.getPriority()){
+            case 1:
+                viewHolder.background.setBackgroundColor(ContextCompat.getColor(mContext, R.color.red));
+                break;
+            case 2:
+                viewHolder.background.setBackgroundColor(ContextCompat.getColor(mContext, R.color.orange));
+                break;
+            default:
+                viewHolder.background.setBackgroundColor(ContextCompat.getColor(mContext, R.color.beautiful_green));
+                break;
+        }
         return convertView;
     }
 
     private class ViewHolder {
         TextView title, description, deadLine;
         ImageView done;
+        View background;
     }
 
 

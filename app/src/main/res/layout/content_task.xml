@@ -18,6 +18,7 @@
     <info.hoang8f.android.segmented.SegmentedGroup
         android:id="@+id/task_priority"
         android:layout_width="match_parent"
+        android:orientation="horizontal"
         android:layout_height="wrap_content">
 
         <RadioButton

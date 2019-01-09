@@ -40,7 +40,8 @@ public class TaskActivity extends AppCompatActivity {
             String sTitle = title.getText().toString();
             int iPriority = getPriority();
             Task task = new Task(sTitle, iPriority);
-            TaskManager.getInstance().addnewTask(task);
+            TaskManager.getInstance().addNewTask(task);
+            finish();
             return true;
         }
         return super.onOptionsItemSelected(item);
