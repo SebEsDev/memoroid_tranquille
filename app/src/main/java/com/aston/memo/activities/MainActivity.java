@@ -1,4 +1,4 @@
-package com.aston.memo;
+package com.aston.memo.activities;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -8,6 +8,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
+import android.widget.Switch;
+
+import com.aston.memo.R;
+import com.aston.memo.adapters.TaskAdapter;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,6 +23,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        ListView listView = findViewById(R.id.main_list);
+        Switch switchDone = findViewById(R.id.main_switch_done);
+
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -26,6 +36,10 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        TaskAdapter taskAdapter = new TaskAdapter(getLayoutInflater());
+        listView.setAdapter(taskAdapter);
+        listView.setEmptyView(findViewById(R.id.main_list_empty));
     }
 
     @Override
