@@ -19,6 +19,8 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    TaskAdapter taskAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,9 +40,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        TaskAdapter taskAdapter = new TaskAdapter(getLayoutInflater());
+
+        taskAdapter = new TaskAdapter(getLayoutInflater());
         listView.setAdapter(taskAdapter);
         listView.setEmptyView(findViewById(R.id.main_list_empty));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        taskAdapter.notifyDataSetChanged();
     }
 
     @Override

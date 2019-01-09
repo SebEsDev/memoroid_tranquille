@@ -31,4 +31,8 @@ public class TaskManager {
     public Task getTaskForPosition(int index) {
         return taskList.get(index);
     }
+
+    public void addnewTask(Task task) {
+        taskList.add(task);
+    }
 }

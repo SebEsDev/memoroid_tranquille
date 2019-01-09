@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.widget.EditText;
 
 import com.aston.memo.R;
+import com.aston.memo.managers.TaskManager;
 import com.aston.memo.model.Task;
 
 import info.hoang8f.android.segmented.SegmentedGroup;
@@ -39,7 +40,7 @@ public class TaskActivity extends AppCompatActivity {
             String sTitle = title.getText().toString();
             int iPriority = getPriority();
             Task task = new Task(sTitle, iPriority);
-            
+            TaskManager.getInstance().addnewTask(task);
             return true;
         }
         return super.onOptionsItemSelected(item);
