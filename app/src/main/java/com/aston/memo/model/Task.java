@@ -1,6 +1,5 @@
 package com.aston.memo.model;
 
-import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Task {
@@ -8,7 +7,7 @@ public class Task {
     private long dateCreation;
     private String title;
     private int priority;
-    private String desc;
+    private String description;
     private boolean done;
     private long dateModif;
     private boolean isDeleted;
@@ -47,12 +46,12 @@ public class Task {
         this.priority = priority;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public boolean isDone() {

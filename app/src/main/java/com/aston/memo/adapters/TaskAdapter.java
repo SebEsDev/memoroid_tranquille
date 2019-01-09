@@ -1,6 +1,5 @@
 package com.aston.memo.adapters;
 
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.aston.memo.R;
+import com.aston.memo.model.Task;
 
 public class TaskAdapter extends BaseAdapter {
 
@@ -36,18 +36,22 @@ public class TaskAdapter extends BaseAdapter {
             convertView = mLayoutInflater.inflate(R.layout.task_line, parent, false);
             viewHolder = new ViewHolder();
             viewHolder.title = convertView.findViewById(R.id.task_line_title);
-            viewHolder.desc = convertView.findViewById(R.id.task_line_desc);
+            viewHolder.description = convertView.findViewById(R.id.task_line_desc);
             viewHolder.deadLine = convertView.findViewById(R.id.task_line_deadLine);
             viewHolder.done = convertView.findViewById(R.id.task_line_done);
             convertView.setTag(viewHolder);
-        }else {
+        } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
-        return null;
+        Task task = (Task) getItem(position);
+        viewHolder.title.setText(task.getTitle());
+        viewHolder.description.setText(task.getDescription());
+        viewHolder.done.setVisibility(task.isDone() ? View.VISIBLE : View.GONE);
+        return convertView;
     }
 
     private class ViewHolder {
-        TextView title, desc, deadLine;
+        TextView title, description, deadLine;
         ImageView done;
     }
 
