@@ -11,19 +11,30 @@
         android:layout_height="wrap_content">
 
         <TextView
+            android:id="@+id/task_line_title"
+            style="@style/TextViewSingleLine"
+            android:textSize="@dimen/task_line_title_size"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
         <TextView
+            android:id="@+id/task_line_desc"
+            android:textSize="@dimen/task_line_desc_size"
             android:layout_width="wrap_content"
+            style="@style/TextViewSingleLine"
             android:layout_height="wrap_content" />
 
         <TextView
+            android:id="@+id/task_line_deadLine"
+            android:textSize="@dimen/task_line_deadLine_size"
             android:layout_width="wrap_content"
+            style="@style/TextViewSingleLine"
             android:layout_height="wrap_content" />
+
     </LinearLayout>
 
     <ImageView
+        android:id="@+id/task_line_done"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/check"

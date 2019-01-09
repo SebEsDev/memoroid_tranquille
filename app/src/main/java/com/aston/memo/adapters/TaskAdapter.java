@@ -25,4 +25,6 @@ public class TaskAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         return null;
     }
+
+    
 }

@@ -1,3 +1,6 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="task_line_title_size">16sp</dimen>
+    <dimen name="task_line_desc_size">14sp</dimen>
+    <dimen name="task_line_deadLine_size">18sp</dimen>
 </resources>
