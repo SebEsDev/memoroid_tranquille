@@ -3,4 +3,6 @@
     <string name="action_settings">Settings</string>
     <string name="switch_done">Show \"done\" tasks</string>
     <string name="list_empty_hint">You canc reate a task</string>
+    <string name="title">\"\"</string>
+    <string name="description">\"\"</string>
 </resources>
