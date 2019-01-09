@@ -21,16 +21,19 @@
         android:layout_height="wrap_content">
 
         <RadioButton
+            android:id="@+id/task_priority_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="1"/>
 
         <RadioButton
+            android:id="@+id/task_priority_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="2"/>
 
         <RadioButton
+            android:id="@+id/task_priority_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="3"/>
