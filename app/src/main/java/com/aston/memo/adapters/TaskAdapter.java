@@ -8,20 +8,25 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.aston.memo.R;
+import com.aston.memo.managers.TaskManager;
 import com.aston.memo.model.Task;
 
 public class TaskAdapter extends BaseAdapter {
 
     private LayoutInflater mLayoutInflater;
 
+    public TaskAdapter(LayoutInflater mLayoutInflater) {
+        this.mLayoutInflater = mLayoutInflater;
+    }
+
     @Override
     public int getCount() {
-        return 0;
+        return TaskManager.getInstance().getTaskSize();
     }
 
     @Override
     public Object getItem(int position) {
-        return null;
+        return TaskManager.getInstance().getTaskForPosition(position);
     }
 
     @Override
