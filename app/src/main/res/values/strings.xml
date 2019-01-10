@@ -7,4 +7,8 @@
     <string name="description">Description</string>
     <string name="title_mandatory">Title is mandatory !</string>
     <string name="back_task_confirmation">Are you sure to cancel ?</string>
+    <string name="deadLine">DeadLine</string>
+    <string name="date_placeholder">JJ:MM</string>
+    <string name="time_placeholder">HH:MM</string>
+    <string name="priority">Priority</string>
 </resources>

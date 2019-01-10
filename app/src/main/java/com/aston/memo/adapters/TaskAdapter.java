@@ -29,7 +29,7 @@ public class TaskAdapter extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int position) {
+    public Task getItem(int position) {
         return TaskManager.getInstance().getTaskForPosition(position);
     }
 

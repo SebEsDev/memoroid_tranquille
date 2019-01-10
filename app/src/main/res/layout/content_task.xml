@@ -1,56 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
     xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
+
     android:layout_width="match_parent"
+
     android:layout_height="match_parent"
+
+    android:orientation="vertical"
+
     android:padding="6dp">
 
     <EditText
+
         android:id="@+id/task_title"
-        android:hint="@string/title"
+
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+
+        android:layout_height="wrap_content"
+
+        android:hint="@string/title" />
 
     <EditText
+
         android:id="@+id/task_description"
-        android:hint="@string/description"
+
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+
+        android:layout_height="wrap_content"
+
+        android:hint="@string/description" />
+
+    <TextView
+
+        android:layout_width="wrap_content"
+
+        android:layout_height="wrap_content"
+
+        android:layout_gravity="center"
+
+        android:layout_marginTop="10dp"
+
+        android:text="@string/priority" />
 
     <info.hoang8f.android.segmented.SegmentedGroup
+
         android:id="@+id/task_priority"
+
         android:layout_width="wrap_content"
+
+        android:layout_height="wrap_content"
+
         android:layout_gravity="center"
+
         android:gravity="center"
+
         android:orientation="horizontal"
-        segmentedgroup:sc_tint_color="@color/beautiful_green"
-        android:layout_height="wrap_content">
+
+        segmentedgroup:sc_tint_color="@color/beautiful_green">
 
         <RadioButton
+
             android:id="@+id/task_priority_1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+
             style="@style/RadioButton"
-            android:text="1"/>
+
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+
+            android:text="1" />
 
         <RadioButton
+
             android:id="@+id/task_priority_2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+
             style="@style/RadioButton"
-            android:text="2"/>
+
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+
+            android:text="2" />
 
         <RadioButton
+
             android:id="@+id/task_priority_3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+
             style="@style/RadioButton"
+
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+
             android:checked="true"
-            android:text="3"/>
 
-
+            android:text="3" />
 
     </info.hoang8f.android.segmented.SegmentedGroup>
+
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:text="@string/deadLine" />
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+
+            android:id="@+id/task_deadLine_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/date_placeholder"
+            android:layout_weight="1" />
+
+        <Button
+
+            android:id="@+id/task_deadLine_time"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/time_placeholder"
+            android:layout_weight="1" />
+
+    </LinearLayout>
 
 </LinearLayout>

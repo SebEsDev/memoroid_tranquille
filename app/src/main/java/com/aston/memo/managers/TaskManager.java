@@ -40,4 +40,13 @@ public class TaskManager {
     public void save(){
         Hawk.put(Constants.TASK_LIST, taskList);
     }
+
+    public Task getTaskFromId(int id) {
+        for(Task t: taskList){
+            if(t.getId() == id){
+                return t;
+            }
+        }
+        return  null;
+    }
 }
