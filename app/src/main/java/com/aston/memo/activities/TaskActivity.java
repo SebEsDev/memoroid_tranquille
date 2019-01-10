@@ -119,6 +119,7 @@ public class TaskActivity extends AppCompatActivity implements RadioGroup.OnChec
                 } else {
                     currentTask.setTitle(sTitle.trim());
                     currentTask.setPriority(iPriority);
+                    currentTask.setDateModif(System.currentTimeMillis());
                 }
 
                 currentTask.setDescription(description.getText().toString());
