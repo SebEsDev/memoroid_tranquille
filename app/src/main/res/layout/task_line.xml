@@ -18,6 +18,7 @@
             style="@style/TextViewSingleLine"
             android:textSize="@dimen/task_line_title_size"
             android:textColor="@color/white"
+            android:fontFamily="@font/coiny_regular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 

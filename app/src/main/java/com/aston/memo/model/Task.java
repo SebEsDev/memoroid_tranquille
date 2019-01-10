@@ -19,7 +19,6 @@ public class Task {
         this.priority = priority;
         this.dateCreation = System.currentTimeMillis();
         this.id = ThreadLocalRandom.current().nextInt();
-
     }
 
     public long getDateCreation() {
