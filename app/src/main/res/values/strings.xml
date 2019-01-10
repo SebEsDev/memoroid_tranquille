@@ -6,4 +6,5 @@
     <string name="title">Titre</string>
     <string name="description">Description</string>
     <string name="title_mandatory">Title is mandatory !</string>
+    <string name="back_task_confirmation">Are you sure to cancel ?</string>
 </resources>
