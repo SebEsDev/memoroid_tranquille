@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 import com.aston.memo.R;
 import com.aston.memo.managers.TaskManager;
@@ -43,9 +44,11 @@ public class TaskActivity extends AppCompatActivity {
             String sTitle = title.getText().toString();
             if (StringUtils.isNotBlank(sTitle)) {
                 int iPriority = getPriority();
-                Task task = new Task(sTitle, iPriority);
+                Task task = new Task(sTitle.trim(), iPriority);
                 TaskManager.getInstance().addNewTask(task);
                 finish();
+            } else {
+                Toast.makeText(this, R.string.title_mandatory, Toast.LENGTH_SHORT).show();
             }
             return true;
         }

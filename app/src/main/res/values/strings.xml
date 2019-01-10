@@ -5,4 +5,5 @@
     <string name="list_empty_hint">You canc reate a task</string>
     <string name="title">Titre</string>
     <string name="description">Description</string>
+    <string name="title_mandatory">Title is mandatory !</string>
 </resources>
