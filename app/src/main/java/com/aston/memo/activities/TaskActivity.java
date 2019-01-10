@@ -101,6 +101,9 @@ public class TaskActivity extends AppCompatActivity implements RadioGroup.OnChec
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_task, menu);
+        if(currentTask == null){
+            menu.findItem(R.id.menu_task_delete).setVisible(false);
+        }
         return true;
     }
 
