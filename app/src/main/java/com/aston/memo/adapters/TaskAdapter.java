@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.aston.memo.R;
 import com.aston.memo.managers.TaskManager;
 import com.aston.memo.model.Task;
+import com.daimajia.swipe.SwipeLayout;
 
 import org.ocpsoft.prettytime.PrettyTime;
 
@@ -76,6 +77,10 @@ public class TaskAdapter extends BaseAdapter {
             PrettyTime p = new PrettyTime();
             viewHolder.deadLine.setText(p.format(new Date(task.getDeadLine())));
         }
+        SwipeLayout swipeLayout = convertView.findViewById(R.id.swipe_layout);
+        swipeLayout.setShowMode(SwipeLayout.ShowMode.LayDown);
+        swipeLayout.addDrag(SwipeLayout.DragEdge.Right, convertView.findViewById(R.id.bottom_wrapper));
+        swipeLayout.addDrag(SwipeLayout.DragEdge.Left, null);
         return convertView;
     }
 
