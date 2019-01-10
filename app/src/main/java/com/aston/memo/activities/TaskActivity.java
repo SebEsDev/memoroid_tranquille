@@ -41,6 +41,7 @@ public class TaskActivity extends AppCompatActivity implements RadioGroup.OnChec
     private boolean hasChanged;
     private Button date, time;
     private Calendar calendarDeadLine;
+    private Task currentTask;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -72,15 +73,15 @@ public class TaskActivity extends AppCompatActivity implements RadioGroup.OnChec
         priority.setOnCheckedChangeListener(this);
         if (getIntent().hasExtra(Constants.TASK_ID)) {
             String id = getIntent().getStringExtra(Constants.TASK_ID);
-            Task task = TaskManager.getInstance().getTaskFromId(id);
-            if (task != null) {
-                title.setText(task.getTitle());
-                description.setText(task.getDescription());
-                if (task.getDeadLine() != 0) {
+            currentTask = TaskManager.getInstance().getTaskFromId(id);
+            if (currentTask != null) {
+                title.setText(currentTask.getTitle());
+                description.setText(currentTask.getDescription());
+                if (currentTask.getDeadLine() != 0) {
                     calendarDeadLine = Calendar.getInstance();
-                    calendarDeadLine.setTimeInMillis(task.getDeadLine());
+                    calendarDeadLine.setTimeInMillis(currentTask.getDeadLine());
                 }
-                priority.check(getRadioButtonFromPriority(task.getPriority()));
+                priority.check(getRadioButtonFromPriority(currentTask.getPriority()));
             }
         }
     }
@@ -109,12 +110,18 @@ public class TaskActivity extends AppCompatActivity implements RadioGroup.OnChec
             String sTitle = title.getText().toString();
             if (StringUtils.isNotBlank(sTitle)) {
                 int iPriority = getPriority();
-                Task task = new Task(sTitle.trim(), iPriority);
-                task.setDescription(description.getText().toString());
-                if (calendarDeadLine != null) {
-                    task.setDeadLine(calendarDeadLine.getTimeInMillis());
+                if(currentTask == null){
+                    currentTask = new Task(sTitle.trim(), iPriority);
+                }else{
+                    currentTask.setTitle(sTitle.trim());
+                    currentTask.setPriority(iPriority);
                 }
-                TaskManager.getInstance().addNewTask(task);
+
+                currentTask.setDescription(description.getText().toString());
+                if (calendarDeadLine != null) {
+                    currentTask.setDeadLine(calendarDeadLine.getTimeInMillis());
+                }
+                TaskManager.getInstance().saveTask(currentTask);
                 finish();
             } else {
                 Toast.makeText(this, R.string.title_mandatory, Toast.LENGTH_SHORT).show();

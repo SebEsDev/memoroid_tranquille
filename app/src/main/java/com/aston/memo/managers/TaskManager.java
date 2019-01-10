@@ -4,6 +4,8 @@ import com.aston.memo.common.Constants;
 import com.aston.memo.model.Task;
 import com.orhanobut.hawk.Hawk;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,8 +34,12 @@ public class TaskManager {
         return taskList.get(index);
     }
 
-    public void addNewTask(Task task) {
-        taskList.add(task);
+    public void saveTask(Task task) {
+        if(getTaskFromId(task.getId()) == null){
+            taskList.add(task);
+        }else{
+            taskList.set(getTaskPositionFromId(task.getId()), task);
+        }
         save();
     }
 
@@ -48,5 +54,14 @@ public class TaskManager {
             }
         }
         return  null;
+    }
+
+    public int getTaskPositionFromId(String id){
+        for(int i=0; i<taskList.size();i++){
+            if(StringUtils.equals(taskList.get(i).getId(), id)){
+                return i;
+            }
+        }
+        return 0;
     }
 }
