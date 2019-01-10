@@ -29,6 +29,7 @@ public class TaskActivity extends AppCompatActivity {
         setContentView(R.layout.activity_task);
         title = findViewById(R.id.task_title);
         priority = findViewById(R.id.task_priority);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
@@ -51,6 +52,8 @@ public class TaskActivity extends AppCompatActivity {
                 Toast.makeText(this, R.string.title_mandatory, Toast.LENGTH_SHORT).show();
             }
             return true;
+        } else if(id == android.R.id.home){
+            onBackPressed();
         }
         return super.onOptionsItemSelected(item);
     }
