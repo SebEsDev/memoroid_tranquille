@@ -90,6 +90,9 @@ public class TaskAdapter extends BaseAdapter {
                 TaskManager.getInstance().save();
             }
         });
+        if(task.isDone()){
+            viewHolder.background.setBackgroundColor(ContextCompat.getColor(mContext, R.color.blue));
+        }
         return convertView;
     }
 
