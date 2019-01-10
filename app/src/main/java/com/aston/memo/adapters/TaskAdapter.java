@@ -54,11 +54,12 @@ public class TaskAdapter extends BaseAdapter {
             viewHolder.deadLine = convertView.findViewById(R.id.task_line_deadLine);
             viewHolder.done = convertView.findViewById(R.id.task_line_done);
             viewHolder.background = convertView.findViewById(R.id.task_line_background);
+            viewHolder.doneAction = convertView.findViewById(R.id.left_image);
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
-        Task task = (Task) getItem(position);
+        final Task task = (Task) getItem(position);
         viewHolder.title.setText(task.getTitle());
         viewHolder.description.setText(task.getDescription());
         viewHolder.done.setVisibility(task.isDone() ? View.VISIBLE : View.GONE);
@@ -79,14 +80,22 @@ public class TaskAdapter extends BaseAdapter {
         }
         SwipeLayout swipeLayout = convertView.findViewById(R.id.swipe_layout);
         swipeLayout.setShowMode(SwipeLayout.ShowMode.LayDown);
-        swipeLayout.addDrag(SwipeLayout.DragEdge.Right, convertView.findViewById(R.id.bottom_wrapper));
-        swipeLayout.addDrag(SwipeLayout.DragEdge.Left, null);
+        swipeLayout.addDrag(SwipeLayout.DragEdge.Left, convertView.findViewById(R.id.bottom_wrapper));
+        swipeLayout.addDrag(SwipeLayout.DragEdge.Right, null);
+        viewHolder.doneAction.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                task.setDone(!task.isDone());
+                notifyDataSetChanged();
+                TaskManager.getInstance().save();
+            }
+        });
         return convertView;
     }
 
     private class ViewHolder {
         TextView title, description, deadLine;
-        ImageView done;
+        ImageView done, doneAction;
         View background;
     }
 
