@@ -23,6 +23,14 @@ public class TaskManager {
         return instance;
     }
 
+    public Boolean getShowDone() {
+        return showDone;
+    }
+
+    public void setShowDone(Boolean showDone) {
+        this.showDone = showDone;
+    }
+
     private TaskManager() {
         taskList = Hawk.get(Constants.TASK_LIST, new ArrayList<Task>());
     }

@@ -16,6 +16,7 @@ import android.widget.Switch;
 import com.aston.memo.R;
 import com.aston.memo.adapters.TaskAdapter;
 import com.aston.memo.common.Constants;
+import com.aston.memo.managers.TaskManager;
 import com.aston.memo.model.Task;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener, CompoundButton.OnCheckedChangeListener {
@@ -88,6 +89,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-
+        TaskManager.getInstance().setShowDone(isChecked);
+        taskAdapter.notifyDataSetChanged();
     }
 }
