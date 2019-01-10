@@ -27,12 +27,14 @@
             android:textSize="@dimen/task_line_desc_size"
             android:layout_width="wrap_content"
             style="@style/TextViewSingleLine"
+            android:textColor="@color/white"
             android:layout_height="wrap_content" />
 
         <TextView
             android:id="@+id/task_line_deadLine"
             android:textSize="@dimen/task_line_deadLine_size"
             android:layout_width="wrap_content"
+            android:textColor="@color/white"
             style="@style/TextViewSingleLine"
             android:layout_height="wrap_content" />
 

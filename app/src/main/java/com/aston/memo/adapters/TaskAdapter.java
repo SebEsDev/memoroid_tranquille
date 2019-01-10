@@ -13,6 +13,10 @@ import com.aston.memo.R;
 import com.aston.memo.managers.TaskManager;
 import com.aston.memo.model.Task;
 
+import org.ocpsoft.prettytime.PrettyTime;
+
+import java.util.Date;
+
 public class TaskAdapter extends BaseAdapter {
 
     private LayoutInflater mLayoutInflater;
@@ -67,6 +71,10 @@ public class TaskAdapter extends BaseAdapter {
             default:
                 viewHolder.background.setBackgroundColor(ContextCompat.getColor(mContext, R.color.beautiful_green));
                 break;
+        }
+        if(task.getDeadLine() != 0){
+            PrettyTime p = new PrettyTime();
+            viewHolder.deadLine.setText(p.format(new Date(task.getDeadLine())));
         }
         return convertView;
     }
