@@ -47,6 +47,7 @@ public class TaskActivity extends AppCompatActivity implements RadioGroup.OnChec
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task);
         title = findViewById(R.id.task_title);
+        description = findViewById(R.id.task_description);
         priority = findViewById(R.id.task_priority);
         date = findViewById(R.id.task_deadLine_date);
         time = findViewById(R.id.task_deadLine_time);
@@ -70,7 +71,7 @@ public class TaskActivity extends AppCompatActivity implements RadioGroup.OnChec
         });
         priority.setOnCheckedChangeListener(this);
         if (getIntent().hasExtra(Constants.TASK_ID)) {
-            int id = getIntent().getIntExtra(Constants.TASK_ID, 0);
+            String id = getIntent().getStringExtra(Constants.TASK_ID);
             Task task = TaskManager.getInstance().getTaskFromId(id);
             if (task != null) {
                 title.setText(task.getTitle());

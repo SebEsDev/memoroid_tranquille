@@ -1,5 +1,6 @@
 package com.aston.memo.model;
 
+import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Task {
@@ -12,13 +13,13 @@ public class Task {
     private long dateModif;
     private boolean isDeleted;
     private long deadLine;
-    private int id;
+    private String id;
 
     public Task(String title, int priority) {
         this.title = title;
         this.priority = priority;
         this.dateCreation = System.currentTimeMillis();
-        this.id = ThreadLocalRandom.current().nextInt();
+        this.id = UUID.randomUUID().toString();
     }
 
     public long getDateCreation() {
@@ -85,7 +86,7 @@ public class Task {
         this.deadLine = deadLine;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 }

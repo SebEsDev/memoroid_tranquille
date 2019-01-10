@@ -81,5 +81,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             Task task = taskAdapter.getItem(position);
             Intent intent = new Intent(getApplicationContext(), TaskActivity.class);
             intent.putExtra(Constants.TASK_ID, task.getId());
+            startActivity(intent);
     }
 }

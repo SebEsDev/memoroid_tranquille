@@ -41,9 +41,9 @@ public class TaskManager {
         Hawk.put(Constants.TASK_LIST, taskList);
     }
 
-    public Task getTaskFromId(int id) {
+    public Task getTaskFromId(String id) {
         for(Task t: taskList){
-            if(t.getId() == id){
+            if(t.getId().equals(id)){
                 return t;
             }
         }
