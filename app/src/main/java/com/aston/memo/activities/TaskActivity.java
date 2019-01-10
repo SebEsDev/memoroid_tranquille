@@ -55,8 +55,22 @@ public class TaskActivity extends AppCompatActivity implements RadioGroup.OnChec
         date.setOnClickListener(this);
         time.setOnClickListener(this);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        title.addTextChangedListener(new TextWatcher() {
 
+        if (getIntent().hasExtra(Constants.TASK_ID)) {
+            String id = getIntent().getStringExtra(Constants.TASK_ID);
+            currentTask = TaskManager.getInstance().getTaskFromId(id);
+            if (currentTask != null) {
+                title.setText(currentTask.getTitle());
+                description.setText(currentTask.getDescription());
+                if (currentTask.getDeadLine() != 0) {
+                    calendarDeadLine = Calendar.getInstance();
+                    calendarDeadLine.setTimeInMillis(currentTask.getDeadLine());
+                }
+                priority.check(getRadioButtonFromPriority(currentTask.getPriority()));
+            }
+        }
+
+        title.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                 hasChanged = true;
@@ -71,19 +85,6 @@ public class TaskActivity extends AppCompatActivity implements RadioGroup.OnChec
             }
         });
         priority.setOnCheckedChangeListener(this);
-        if (getIntent().hasExtra(Constants.TASK_ID)) {
-            String id = getIntent().getStringExtra(Constants.TASK_ID);
-            currentTask = TaskManager.getInstance().getTaskFromId(id);
-            if (currentTask != null) {
-                title.setText(currentTask.getTitle());
-                description.setText(currentTask.getDescription());
-                if (currentTask.getDeadLine() != 0) {
-                    calendarDeadLine = Calendar.getInstance();
-                    calendarDeadLine.setTimeInMillis(currentTask.getDeadLine());
-                }
-                priority.check(getRadioButtonFromPriority(currentTask.getPriority()));
-            }
-        }
     }
 
     private int getRadioButtonFromPriority(int iPriority){
