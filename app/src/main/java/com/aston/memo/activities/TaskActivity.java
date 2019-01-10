@@ -87,8 +87,8 @@ public class TaskActivity extends AppCompatActivity implements RadioGroup.OnChec
         priority.setOnCheckedChangeListener(this);
     }
 
-    private int getRadioButtonFromPriority(int iPriority){
-        switch (iPriority){
+    private int getRadioButtonFromPriority(int iPriority) {
+        switch (iPriority) {
             case 1:
                 return findViewById(R.id.task_priority_1).getId();
             case 2:
@@ -111,9 +111,9 @@ public class TaskActivity extends AppCompatActivity implements RadioGroup.OnChec
             String sTitle = title.getText().toString();
             if (StringUtils.isNotBlank(sTitle)) {
                 int iPriority = getPriority();
-                if(currentTask == null){
+                if (currentTask == null) {
                     currentTask = new Task(sTitle.trim(), iPriority);
-                }else{
+                } else {
                     currentTask.setTitle(sTitle.trim());
                     currentTask.setPriority(iPriority);
                 }
@@ -131,6 +131,19 @@ public class TaskActivity extends AppCompatActivity implements RadioGroup.OnChec
 
         } else if (id == android.R.id.home) {
             onBackPressed();
+        } else if(id == R.id.menu_task_delete){
+            AlertDialog.Builder builder = new AlertDialog.Builder(TaskActivity.this);
+            builder.setTitle(R.string.app_name)
+                    .setMessage(R.string.delete_confirmation)
+                    .setNegativeButton(android.R.string.cancel, null)
+                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            TaskManager.getInstance().deleteTask(currentTask.getId());
+                            finish();
+                        }
+                    });
+            builder.create().show();
         }
         return super.onOptionsItemSelected(item);
     }

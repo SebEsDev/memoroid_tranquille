@@ -11,4 +11,5 @@
     <string name="date_placeholder">JJ:MM</string>
     <string name="time_placeholder">HH:MM</string>
     <string name="priority">Priority</string>
+    <string name="delete_confirmation">Are you sure to delete this fucking memo ?</string>
 </resources>

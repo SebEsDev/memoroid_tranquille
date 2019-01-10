@@ -64,4 +64,10 @@ public class TaskManager {
         }
         return 0;
     }
+
+    public void deleteTask(String id) {
+        int position = getTaskPositionFromId(id);
+        taskList.remove(position);
+        save();
+    }
 }

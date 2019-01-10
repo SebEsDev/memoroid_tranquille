@@ -7,4 +7,10 @@
         android:title=""
         android:icon="@drawable/save"
         app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/menu_task_delete"
+        android:icon="@drawable/delete"
+        app:showAsAction="always"
+        android:title=""/>
 </menu>
