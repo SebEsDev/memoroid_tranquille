@@ -7,6 +7,9 @@ import com.orhanobut.hawk.Hawk;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class TaskManager {
@@ -54,6 +57,13 @@ public class TaskManager {
                 result.add(t);
             }
         }
+        Collections.sort(result, new Comparator<Task>() {
+            @Override
+            public int compare(Task o1, Task o2) {
+                
+                return 0;
+            }
+        });
         return result;
     }
 
