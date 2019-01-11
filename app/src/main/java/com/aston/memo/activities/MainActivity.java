@@ -12,12 +12,21 @@ import android.widget.AdapterView;
 import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.Switch;
+import android.widget.Toast;
 
 import com.aston.memo.R;
 import com.aston.memo.adapters.TaskAdapter;
 import com.aston.memo.common.Constants;
+import com.aston.memo.common.WebServerIntf;
 import com.aston.memo.managers.TaskManager;
+import com.aston.memo.model.Example;
 import com.aston.memo.model.Task;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener, CompoundButton.OnCheckedChangeListener {
 
@@ -48,6 +57,23 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         listView.setEmptyView(findViewById(R.id.main_list_empty));
         listView.setOnItemClickListener(this);
         switchDone.setOnCheckedChangeListener(this);
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://www.mocky.io/v2/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        WebServerIntf webServerIntf = retrofit.create(WebServerIntf.class);
+        webServerIntf.getMyExample().enqueue(new Callback<Example>() {
+            @Override
+            public void onResponse(Call<Example> call, Response<Example> response) {
+                Toast.makeText(getApplicationContext(), response.body().getHello(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<Example> call, Throwable t) {
+
+            }
+        });
     }
 
     @Override
