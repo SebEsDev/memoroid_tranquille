@@ -60,8 +60,11 @@ public class TaskManager {
         Collections.sort(result, new Comparator<Task>() {
             @Override
             public int compare(Task o1, Task o2) {
-                
-                return 0;
+                if(o1.getDeadLine() != o2.getDeadLine()){
+                    return Long.valueOf(o2.getPriority() - o1.getPriority()).intValue();
+                }else {
+                    return o1.getPriority() - o2.getPriority();
+                }
             }
         });
         return result;
